@@ -5,7 +5,7 @@ metadata:
     service: udagram-user
   name: udagram-user
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: udagram-user
@@ -18,13 +18,13 @@ spec:
       - image: rochanajayakumar/udagram-api-user:v1 
         name: udagram-user
         imagePullPolicy: Always
-        # resources:
-        #   requests:
-        #     memory: "64Mi"
-        #     cpu: "250m"
-        #   limits:
-        #     memory: "1024Mi"
-        #     cpu: "500m"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
         env:
         - name: POSTGRES_PASSWORD
           valueFrom:
